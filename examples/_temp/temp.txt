@@ -1,0 +1,2 @@
+/media/DataDisk/myproject/deeplearning/caffe/examples/images/cat.jpg
+/media/DataDisk/myproject/deeplearning/caffe/examples/images/fish-bike.jpg

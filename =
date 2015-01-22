@@ -1,0 +1,23 @@
+Downloading/unpacking pyzmq
+  Running setup.py egg_info for package pyzmq
+    
+    no previously-included directories found matching 'docs/build'
+    no previously-included directories found matching 'docs/gh-pages'
+    warning: no previously-included files found matching 'bundled/zeromq/src/Makefile*'
+    warning: no previously-included files found matching 'bundled/zeromq/src/platform.hpp'
+    warning: no previously-included files found matching 'setup.cfg'
+    warning: no previously-included files found matching 'zmq/libzmq*'
+    warning: no previously-included files matching '__pycache__/*' found anywhere in distribution
+    warning: no previously-included files matching '.deps/*' found anywhere in distribution
+    warning: no previously-included files matching '*.so' found anywhere in distribution
+    warning: no previously-included files matching '*.pyd' found anywhere in distribution
+    warning: no previously-included files matching '.git*' found anywhere in distribution
+    warning: no previously-included files matching '.DS_Store' found anywhere in distribution
+    warning: no previously-included files matching '.mailmap' found anywhere in distribution
+    warning: no previously-included files matching 'Makefile.am' found anywhere in distribution
+    warning: no previously-included files matching 'Makefile.in' found anywhere in distribution
+Downloading/unpacking 2.1.11
+  Could not find any downloads that satisfy the requirement 2.1.11
+Cleaning up...
+No distributions at all found for 2.1.11
+Storing complete log in /tmp/tmpsPJHtP
