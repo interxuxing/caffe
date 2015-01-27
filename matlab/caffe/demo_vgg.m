@@ -1,12 +1,40 @@
-vgg_zoo_dir = '/media/DataDisk/myproject/deeplearning/caffe-zoo/VGG';
-model_def_file = fullfile(vgg_zoo_dir, 'VGG_CNN_S_deploy.prototxt');
-model_file = fullfile(vgg_zoo_dir, 'VGG_CNN_S.caffemodel');
-mean_file = fullfile(vgg_zoo_dir, 'VGG_mean.mat');
-use_gpu = false;
+function demo_vgg(vgg_zoo_dir, model_def_file, model_file, mean_file, img_file)
+
+if nargin < 1
+% use basic model from zoo   
+    vgg_zoo_dir = '/media/DataDisk/myproject/deeplearning/caffe-zoo/VGG';
+    model_def_file = fullfile(vgg_zoo_dir, 'VGG_CNN_S_deploy.prototxt');
+    model_file = fullfile(vgg_zoo_dir, 'VGG_CNN_S.caffemodel');
+    mean_file = fullfile(vgg_zoo_dir, 'VGG_mean.mat');
+    img_file = '/media/DataDisk/myproject/deeplearning/caffe/examples/images/cat.jpg';
+elseif nargin == 5
+%     vgg_zoo_dir = '/media/DataDisk/myproject/deeplearning/caffe-zoo/VGG';
+    display(vgg_zoo_dir);
+    model_def_file = fullfile(vgg_zoo_dir, model_def_file);
+    model_file = fullfile(vgg_zoo_dir, model_file);
+    mean_file = fullfile(vgg_zoo_dir, mean_file); 
+%     img_file = '/media/DataDisk/myproject/deeplearning/caffe/examples/images/cat.jpg';
+else
+    error('wrong input paramters, please check again!')
+end
 
 
-im = imread('../../examples/images/cat.jpg');
+use_gpu = true;
+
+im = imread(img_file);
 
 scores = matcaffe_demo_vgg(im, use_gpu, model_def_file, model_file, mean_file);
 
-fprintf('finished! \n');
+% now sort to return the top-5 labels
+scores_mean = mean(scores,2);
+
+[~,labels_idx] = sort(scores_mean, 1, 'descend');
+top5_labels = labels_idx(1:5);
+
+if ~isempty(top5_labels)
+    dlmwrite('predLabelsIdx.txt', top5_labels);
+end
+
+fprintf('predict labels for image %s finished! \n', img_file);
+
+quit;
